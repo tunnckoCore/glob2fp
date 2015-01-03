@@ -1,6 +1,6 @@
 {
   "name": "glob2fp",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Recursively extract/find/search non-glob (real/file/base) path from/in glob pattern or array of glob patterns using `is-glob`.",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline",
