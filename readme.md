@@ -11,7 +11,7 @@ npm test
 
 ## Features
 - get real path from glob pattern or array of glob patterns 
-- support defining another criteria, default is based on `dirname` (nearest non-glob dirname from `fp`)
+- support defining another criteria, default is based on `dirname` (nearest non-glob dirname)
 - recursively lookup
 
 
