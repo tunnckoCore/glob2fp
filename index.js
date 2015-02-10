@@ -49,18 +49,24 @@ var isGlob = require('is-glob');
  * @api public
  */
 module.exports = function glob2fp(fp, opts) {
+  if (!fp) {
+    return '';
+  }
+
   opts = opts || {};
 
   if (Array.isArray(fp)) {
-    return fp.map(mapFilepath)
-  }
-  if (isGlob(fp)) {
-    return mapFilepath(fp)
+    return fp.map(mapFilepath);
   }
 
-  return fp.charAt(0) === '!' ? fp.slice(1) : fp; // is this need?
+  if (isGlob(fp)) {
+    return mapFilepath(fp);
+  }
+
+  return fp;
 
   function mapFilepath(fp) {
+    fp = fp.charAt(0) === '!' ? fp.slice(1) : fp;
     fp = opts.criteria && opts.criteria(fp) || parsePath(fp).dirname;
     return glob2fp(fp, opts);
   }
