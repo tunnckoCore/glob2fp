@@ -17,7 +17,21 @@
     "type": "git",
     "url": "git://github.com/tunnckoCore/glob2fp.git"
   },
-  "keywords": [],
+  "keywords": [
+    "array",
+    "dirname",
+    "extract",
+    "find",
+    "glob",
+    "isglob",
+    "path",
+    "pattern",
+    "recursive",
+    "recursively",
+    "search",
+    "util",
+    "utility"
+  ],
   "license": {
     "type": "MIT",
     "url": "https://github.com/tunnckoCore/glob2fp/blob/master/license.md"
