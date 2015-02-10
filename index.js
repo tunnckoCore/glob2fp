@@ -13,22 +13,29 @@ var isGlob = require('is-glob');
 /**
  * Recursively extract real path from glob pattern
  *
- * **Example**
+ * **Example:**
+ *
  * ```js
  * var glob2fp = require('glob2fp');
- * glob2fp('a/b/c/???/e/*.*')
+ * glob2fp('a/b/c/???/e/*.*');
  * //=> 'a/b/c'
- * glob2fp('a/b/c/{foo,bar}/e/*')
+ * glob2fp('a/b/c/{foo,bar}/e/*');
  * //=> 'a/b/c'
- * glob2fp('a/b/c/foo/e/*.js')
+ * glob2fp('a/b/c/foo/e/*.js');
  * //=> 'a/b/c/foo/e'
+ * glob2fp('!a/b/**.{js,md}');
+ * //=> 'a/b'
+ * glob2fp();
+ * //=> ''
  * ```
+ *
  * Or array of glob patterns
+ *
  * ```js
  * glob2fp([
  *   'a/b/c/???/e/*.*',
  *   'a/b/c/{foo,bar}/e/*',
- *   'a/b/c/foo/e/*.js',
+ *   '!a/b/c/foo/e/*.js',
  *   'a/b/**.{js,md}',
  *   'a/{b,{c,foo},e/d}/*.{js,md,txt}',
  *   'a/b/{c..e}/*.{js,md,txt}'
@@ -39,7 +46,7 @@ var isGlob = require('is-glob');
  *   'a/b/c/foo/e',
  *   'a/b',
  *   'a',
- *   'a/b/'
+ *   'a/b'
  * ]
  * ```
  * @name glob2fp

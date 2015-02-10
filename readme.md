@@ -3,8 +3,8 @@
 > Recursively extract/find/search non-glob (real/file/base) path from/in glob pattern or array of glob patterns using [is-glob][is-glob]. Actually default returns `dirname` that isnt looks like glob. But you can provide another criteria.
 
 ## Install
-```bash
-npm install glob2fp
+```
+npm i --save glob2fp
 npm test
 ```
 
@@ -15,41 +15,48 @@ npm test
 - recursively lookup
 
 
-### [.glob2fp](index.js#L52)
+### [glob2fp](index.js#L52)
 > For more use-cases see the [tests](./test.js)
 > Recursively extract real path from glob pattern
 
-* `fp` **{Array|String}** glob pattern(s)  
-* `opts` **{Object}** only available `options.criteria` function  
-* `returns` **{Array|String}**
+- `fp` **{Array|String}** glob pattern(s)  
+- `opts` **{Object}** only available `options.criteria` function  
+- `returns` **{Array|String}**
 
 **Example**
+
 ```js
 var glob2fp = require('glob2fp');
-glob2fp('a/b/c/???/e/*.*')
+glob2fp('a/b/c/???/e/*.*');
 //=> 'a/b/c'
-glob2fp('a/b/c/{foo,bar}/e/*')
+glob2fp('a/b/c/{foo,bar}/e/*');
 //=> 'a/b/c'
-glob2fp('a/b/c/foo/e/*.js')
+glob2fp('a/b/c/foo/e/*.js');
 //=> 'a/b/c/foo/e'
+glob2fp('!a/b/**.{js,md}');
+//=> 'a/b'
+glob2fp();
+//=> ''
 ```
+
 Or array of glob patterns
+
 ```js
 glob2fp([
   'a/b/c/???/e/*.*',
   'a/b/c/{foo,bar}/e/*',
-  'a/b/c/foo/e/*.js',
+  '!a/b/c/foo/e/*.js',
   'a/b/**.{js,md}',
   'a/{b,{c,foo},e/d}/*.{js,md,txt}',
   'a/b/{c..e}/*.{js,md,txt}'
-])
+]);
 //=> [
   'a/b/c',
   'a/b/c',
   'a/b/c/foo/e',
   'a/b',
   'a',
-  'a/b/'
+  'a/b'
 ]
 ```
 
@@ -94,4 +101,4 @@ Released under the [`MIT`][license-url] license.
 [is-glob]: https://github.com/jonschlinkert/is-glob
 ***
 
-_Powered and automated by [kdf](https://github.com/tunnckoCore), January 3, 2015_
+_Powered and automated by [kdf](https://github.com/tunnckoCore), February 10, 2015_
